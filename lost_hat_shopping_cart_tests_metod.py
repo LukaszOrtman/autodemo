@@ -36,6 +36,6 @@ class LostHatShoppingCartTests(unittest.TestCase):
         shopping_card_button_element = driver.find_element(By.XPATH, shopping_card_button_xpath)
         shopping_card_button_element.click()
 
-        confirmation_modal_element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, confirmation_modal_title_xpath)))
+        confirmation_modal_element = WebDriverWait(driver,4).until(
+            EC.visibility_of_element_located((By.XPATH, confirmation_modal_title_xpath)))
         self.assertEqual(expected_confirmation_modal_text, confirmation_modal_element.text)
