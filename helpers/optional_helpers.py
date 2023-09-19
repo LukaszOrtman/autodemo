@@ -41,5 +41,6 @@ def visibility_of_element_wait(driver, xpath, timeout=10):
 
     locator = (By.XPATH, xpath)
     element_located = EC.visibility_of_element_located(locator)
-    return WebDriverWait(driver, timeout).until(element_located, timeout_message)
+    wait = WebDriverWait(driver, timeout)
+    return wait.until(element_located, timeout_message)
 
