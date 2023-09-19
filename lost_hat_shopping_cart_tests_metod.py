@@ -1,10 +1,7 @@
 import unittest
-from selenium.webdriver.support import expected_conditions as EC
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from helpers import optional_helpers as oh
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class LostHatShoppingCartTests(unittest.TestCase):
@@ -21,11 +18,12 @@ class LostHatShoppingCartTests(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_adding_product_to_the_shopping_cart(self):
+    def test_adding_product_to_the_shopping_cart(self, confirmation_modal_element=None):
         expected_confirmation_modal_text = '\ue876Product successfully added to your shopping cart'
         product_xpath = '//*[@alt="Mountain fox - Vector graphics"]'
         shopping_card_button_xpath = '//*[@class="btn btn-primary add-to-cart"]'
         confirmation_modal_title_xpath = '//*[@id="myModalLabel"]'
+
 
         driver = self.driver
         driver.get(self.subpage_art_url)
@@ -36,6 +34,8 @@ class LostHatShoppingCartTests(unittest.TestCase):
         shopping_card_button_element = driver.find_element(By.XPATH, shopping_card_button_xpath)
         shopping_card_button_element.click()
 
-        confirmation_modal_element = WebDriverWait(driver,4).until(
+        """confirmation_modal_element = WebDriverWait(driver, 4).until(
             EC.visibility_of_element_located((By.XPATH, confirmation_modal_title_xpath)))
+"""
+        # confirmation_modal_element = oh.visibility_of_element_wait(driver, confirmation_modal_title_xpath)
         self.assertEqual(expected_confirmation_modal_text, confirmation_modal_element.text)
