@@ -1,0 +1,7 @@
+{
+  "base_url": "https://autodemo.testoneo.com/en/",
+  "correct_user": "changeme@test.test",
+  "correct_user_pass": "changeme-pass",
+  "correct_user_fullname": "changeme-username changeme-usersurname",
+  "event_firing_driver": true
+}
