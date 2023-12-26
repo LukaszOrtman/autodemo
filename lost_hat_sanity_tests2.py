@@ -1,25 +1,14 @@
-import unittest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import time
+from helpers.wrappers import screenshot_decorator
+from helpers.base_test_class import BaseTestClass
 
+class LostHatSanityTests2(BaseTestClass):
 
-class LostHatSanityTests2(unittest.TestCase):
-
-    @classmethod
-    def setUpClass(self):
-        options = webdriver.ChromeOptions()
-        self.driver = webdriver.Chrome(options=options)
-        self.url = 'https://autodemo.testoneo.com/en/'
-
-    @classmethod
-    def tearDownClass(self):
-        self.driver.quit()
-
+    @screenshot_decorator
     def test_searching_particular_product_by_searchbox(self):
-        driver = self.driver
-        driver.get(self.url)
+        driver = self.conf_driver
+        driver.get(self.base_url)
 
         searching_phrase = 'HUMMINGBIRD'
         expected_element_name = 'Hummingbird Printed Sweater'
@@ -33,8 +22,6 @@ class LostHatSanityTests2(unittest.TestCase):
         for element in searching_element_row:
             if expected_element_name in element.text:
                 found_elements_number = found_elements_number + 1
-
-        print(element.text)
 
         self.assertEqual(1, found_elements_number,
                          f"We expect 1 and actual number of found items is {found_elements_number}")
