@@ -2,6 +2,7 @@ from selenium.webdriver.support.events import AbstractEventListener
 import time
 import allure
 from allure_commons.types import AttachmentType
+import os
 
 class ScreenshotListener(AbstractEventListener):
 
@@ -19,20 +20,8 @@ class ScreenshotListener(AbstractEventListener):
 
 
 def make_screenshot(driver, producer):
-    screenshot_path = rf"testResults\{producer}_exception_{time.time()}.png"
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    screenshot_path = rf"{dir_path}\..\testResults\{producer}_exception_{time.time()}.png"
     driver.get_screenshot_as_file(screenshot_path)
     allure.attach(driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
     print(f"Screenshot saved as {screenshot_path}")
-
-""" Stary kod (ponizej), nowy znajduje sie pod komenatrzem!  
-class ScreenshotListener(AbstractEventListener):
-    def on_exception(self, exception, driver):
-        make_screenshot(driver, 'driver')
-
-def make_screenshot(driver, producer):
-    screenshot_path = rf"testResultss/{producer}_exception_{time.time()}.png"
-    driver.get_screenshot_as_file(screenshot_path)
-    allure.attach(driver.get_screenshot_as_png(), name= "Screnshoot", attachment_type= AttachmentType.PNG)
-    print(f"Screenshot saved as {screenshot_path}")
-    
-"""

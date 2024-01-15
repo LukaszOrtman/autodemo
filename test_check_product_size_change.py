@@ -2,6 +2,7 @@ from helpers.wrappers import screenshot_decorator
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from helpers.base_test_class import BaseTestClass
+import time
 
 
 
@@ -13,6 +14,7 @@ class CheckProductSizeChange(BaseTestClass):
       size_select_xpath = '//*[@id="group_1"]'
       driver = self.driver
       driver.get(self.man_t_shirt_url)
+
       product_size_select_element = driver.find_element(By.XPATH, size_select_xpath)
 
       product_size_select = Select(product_size_select_element)

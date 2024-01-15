@@ -3,5 +3,7 @@
   "correct_user": "changeme@test.test",
   "correct_user_pass": "changeme-pass",
   "correct_user_fullname": "changeme-username changeme-usersurname",
+  "incorrect_user_email": "invalid@test.test",
+  "incorrect_user_pass": "abc123",
   "event_firing_driver": true
 }

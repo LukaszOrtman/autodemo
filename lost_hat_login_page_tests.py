@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from helpers.wrappers import screenshot_decorator
 from helpers.base_test_class import BaseTestClass
@@ -23,7 +25,6 @@ class LostHatLoginPageTests(BaseTestClass):
         driver.get(self.url_log_page)
         expected_name_log_page = "Login"
         title_log_page = driver.title
-        print(title_log_page)
         if title_log_page == expected_name_log_page:
             print("It's ok!")
         else:
@@ -85,9 +86,9 @@ class LostHatLoginPageTests(BaseTestClass):
 
     def test_incorrect_login(self):
         expected_text = 'Authentication failed.'
-        alert_xpath = '//*[@class="alert alert-danger"]'
         user_email = 'invalid@test.test'
         user_pass = 'abc123'
+        alert_xpath = '//*[@class="alert alert-danger"]'
         driver = self.conf_driver
 
         driver.get(self.url_log_page)

@@ -52,7 +52,6 @@ class LostHatFrontPageTests(BaseTestClass):
         slider_element = driver.find_elements(By.XPATH, slider_xpath)
 
         actual_numbers_of_sliders = len(slider_element)
-        print(actual_numbers_of_sliders)
         self.assertEqual(expected_numbers_of_sliders, actual_numbers_of_sliders,
                          f'Number is differrent, smth is wrong with this {slider_xpath} slider on this website: {self.base_url}')
 
@@ -83,7 +82,6 @@ class LostHatFrontPageTests(BaseTestClass):
         slider_element = driver.find_element(By.XPATH, '//*[@id="carousel"]')
         slider_element_text = slider_element.text
         print(slider_element_text)
-        time.sleep(2)
 
     @screenshot_decorator
     def test_number_of_featured_products(self):

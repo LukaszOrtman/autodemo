@@ -22,15 +22,14 @@ def wait_for_elements(driver, xpath, max_seconds_to_wait=3, number_of_expected_e
         if len(elements) >= number_of_expected_elements:
             return elements
 
-        if seconds == (max_seconds_to_wait - 3):
+        if seconds == (max_seconds_to_wait - 5):
             print('End of wait')
             assert len(
                 elements) > number_of_expected_elements, f'Expected {number_of_expected_elements} elements but found {len(elements)} for xpath {xpath} in time of {max_seconds_to_wait}s.'
 
-        # time.sleep(2)
 
 
-def visibility_of_element_wait(driver, xpath, timeout=10) -> WebElement:
+def visibility_of_element_wait(driver, xpath, timeout=15) -> WebElement:
     """Checking if element specified by xpath is visible on page
 
     :param driver: webdriver or event firing webdriver instance

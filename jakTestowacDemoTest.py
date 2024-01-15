@@ -1,5 +1,3 @@
-import unittest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from helpers import functional_helpers
 from helpers.wrappers import screenshot_decorator
@@ -9,7 +7,7 @@ import time
 
 class ProductTests(BaseTestClass):
 
-   def assert_elemnt_text(self,driver, xpath, expected_text):
+   def assert_elemnt_text(self, driver, xpath, expected_text):
        self.header = driver.find_element(By.XPATH, xpath )
        header_text = self.header.text
        self.assertEqual(expected_text, header_text,
@@ -72,7 +70,6 @@ class ProductTests_3(BaseTestClass):
         tshirt_name_text = tshirt_name.text
         self.assertEqual(expected_tshirt_name, tshirt_name_text,
                          f'Expected tshirt name: HUMMINGBIRD PRINTED T-SHIRT , differ from actual {tshirt_name_text}')
-        time.sleep(2)
 
     @screenshot_decorator
     def test_checking_product_price_on_website(self):
